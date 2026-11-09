@@ -14,7 +14,7 @@
 <header class="topbar">
   <div class="logo"><div class="logo-mark">DZ</div><span>دارك DZ</span></div>
   <div class="top-actions">
-    <button class="top-btn" id="langToggle" onclick="toggleLanguage()">Français</button>
+    <button type="button" class="top-btn" id="langToggle">Français</button>
     <button class="top-btn" onclick="showProjects()" data-i18n="myProject">مشروعي</button>
     <button class="top-btn" onclick="showLeads()" data-i18n="requests">طلبات</button>
     <button class="top-btn" onclick="newProject()" data-i18n="newProjectShort">+ مشروع</button>
@@ -172,8 +172,17 @@ const UI_LANG={
 };
 let currentLang=localStorage.getItem("darak_lang")||"ar";
 function applyLanguage(){const d=UI_LANG[currentLang];document.documentElement.lang=currentLang;document.documentElement.dir=currentLang==="fr"?"ltr":"rtl";document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.getAttribute("data-i18n");if(d[k])el.textContent=d[k]});const b=document.getElementById("langToggle");if(b)b.textContent=currentLang==="ar"?"Français":"العربية";}
-function toggleLanguage(){currentLang=currentLang==="ar"?"fr":"ar";localStorage.setItem("darak_lang",currentLang);applyLanguage()}
-applyLanguage();
+function toggleLanguage(){
+  currentLang=currentLang==="ar"?"fr":"ar";
+  localStorage.setItem("darak_lang",currentLang);
+  applyLanguage();
+}
+
+document.addEventListener("DOMContentLoaded",function(){
+  const langBtn=document.getElementById("langToggle");
+  if(langBtn) langBtn.addEventListener("click",toggleLanguage);
+  applyLanguage();
+});
 (async function init(){const {data}=await supabaseClient.auth.getSession();currentUser=data.session?.user||null;supabaseClient.auth.onAuthStateChange(async(_event,session)=>{currentUser=session?.user||null;if(!currentUser)showAuth()});if(currentUser){await loadProjects();showProjects()}else showAuth()})();
 </script>
 </body>
