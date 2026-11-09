@@ -14,11 +14,11 @@
 <header class="topbar">
   <div class="logo"><div class="logo-mark">DZ</div><span>دارك DZ</span></div>
   <div class="top-actions">
-    <button type="button" class="top-btn" id="langToggle" onclick="window.toggleLanguage()">Français</button>
     <button class="top-btn" onclick="showProjects()" data-i18n="myProject">مشروعي</button>
-    <button class="top-btn" onclick="showLeads()" data-i18n="requests">طلبات</button>
-    <button class="top-btn" onclick="newProject()" data-i18n="newProjectShort">+ مشروع</button>
+    <button class="top-btn" onclick="showLeads()" data-i18n="leads">طلبات</button>
+    <button class="top-btn" onclick="newProject()" data-i18n="newProject">+ مشروع</button>
     <button class="account-btn" onclick="logout()" data-i18n="logout">خروج</button>
+    <button type="button" class="top-btn" id="langToggle" aria-label="تغيير اللغة">Français</button>
   </div>
 </header>
 
@@ -58,13 +58,42 @@
   </section>
   <section class="pricing">
     <h2 data-i18n="pricingTitle">أسعار دارك DZ</h2>
-    <p class="pricing-note" data-i18n="pricingNote">خدمة بسيطة واحترافية للمرقّين العقاريين: صفحة مشروع جاهزة، عرض الصور والمعلومات، استقبال العملاء وWhatsApp.</p>
+    <p class="pricing-note" data-i18n="pricingNote">الخدمة موجهة للمرقّين العقاريين. الأسعار التالية تخص الاشتراك الشهري ولا تشمل قيمة العقار نفسه.</p>
     <div class="plans">
-      <div class="plan"><h3 data-i18n="freePlan">مجاني</h3><div class="plan-price">0 دج <small data-i18n="noSubscription">بدون اشتراك</small></div><ul><li data-i18n="free1">✓ صفحة مشروع واحدة</li><li data-i18n="free2">✓ معرض صور</li><li data-i18n="free3">✓ زر WhatsApp</li><li data-i18n="free4">✓ استقبال طلبات العملاء</li><li data-i18n="free5">✓ تجربة مناسبة قبل الاشتراك</li></ul></div>
-      <div class="plan featured"><h3 data-i18n="basicPlan">أساسي</h3><div class="plan-price">2,500 دج / شهر</div><ul><li data-i18n="basic1">✓ صفحة مشروع احترافية</li><li data-i18n="basic2">✓ حتى 5 صور في المعرض</li><li data-i18n="basic3">✓ فيديو إعلاني واحد</li><li data-i18n="basic4">✓ WhatsApp + استقبال الطلبات</li><li data-i18n="basic5">✓ استضافة ونشر الصفحة</li></ul></div>
-      <div class="plan"><h3 data-i18n="proPlan">Pro</h3><div class="plan-price">5,000 دج / شهر</div><ul><li data-i18n="pro1">✓ كل مزايا أساسي</li><li data-i18n="pro2">✓ تصميم أكثر تخصيصًا</li><li data-i18n="pro3">✓ إبراز الأسعار والعروض</li><li data-i18n="pro4">✓ قسم موقع المشروع</li><li data-i18n="pro5">✓ أولوية الدعم والتحديثات</li></ul></div>
+      <div class="plan">
+        <h3 data-i18n="free">مجاني</h3>
+        <div class="plan-price">0 دج <small data-i18n="noSubscription">بدون اشتراك</small></div>
+        <ul>
+          <li data-i18n="free1">✓ صفحة عقارية واحدة</li>
+          <li data-i18n="free2">✓ معرض صور</li>
+          <li data-i18n="free3">✓ WhatsApp</li>
+          <li data-i18n="free4">✓ استقبال طلبات المهتمين</li>
+          <li data-i18n="free5">✓ مناسبة لتجربة الخدمة</li>
+        </ul>
+      </div>
+      <div class="plan featured">
+        <h3 data-i18n="basic">أساسي</h3>
+        <div class="plan-price">2500 دج / شهر</div>
+        <ul>
+          <li data-i18n="basic1">✓ صفحة عقارية احترافية</li>
+          <li data-i18n="basic2">✓ حتى 5 صور في المعرض</li>
+          <li data-i18n="basic3">✓ فيديو إعلاني واحد</li>
+          <li data-i18n="basic4">✓ WhatsApp + طلبات المهتمين</li>
+          <li data-i18n="basic5">✓ الاستضافة والنشر</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3 data-i18n="pro">Pro</h3>
+        <div class="plan-price">5000 دج / شهر</div>
+        <ul>
+          <li data-i18n="pro1">✓ جميع مزايا أساسي</li>
+          <li data-i18n="pro2">✓ تخصيصات إضافية للصفحة</li>
+          <li data-i18n="pro3">✓ إبراز الأسعار والعروض</li>
+          <li data-i18n="pro4">✓ قسم موقع المشروع</li>
+          <li data-i18n="pro5">✓ دعم وأولوية في التحديثات</li>
+        </ul>
+      </div>
     </div>
-    <div style="margin-top:16px;color:#c7d2e2;font-size:11px;line-height:1.9" data-i18n="pricingFoot">الأسعار تخص خدمة دارك DZ فقط ولا تشمل قيمة العقار أو مصاريف الإعلان المدفوع.</div>
   </section>
 </div>
 </main>
@@ -165,10 +194,9 @@ async function showLeads(){if(!currentUser){showAuth();return}hideAll();leadsScr
 async function renderLeads(){const box=leadsList;box.innerHTML="جاري تحميل الطلبات...";const {data,error}=await supabaseClient.from("leads").select("*,projects(name)").eq("user_id",currentUser.id).order("created_at",{ascending:false});if(error){box.innerHTML=`<div class="empty">تعذر تحميل الطلبات.<br>${escapeHTML(error.message)}</div>`;return}if(!data?.length){box.innerHTML=`<div class="empty">لا توجد طلبات بعد.</div>`;return}box.innerHTML="";data.forEach(l=>{const d=document.createElement("div");d.className="lead-card";d.innerHTML=`<div><strong>${escapeHTML(l.name)}</strong><div>📞 ${escapeHTML(l.phone)}</div><div>🏠 ${escapeHTML(l.housing_type||"غير محدد")}</div><div>📁 ${escapeHTML(l.projects?.name||"—")}</div><div class="lead-date">${new Date(l.created_at).toLocaleString("ar-DZ")}</div></div><div class="lead-actions"><select onchange="updateLeadStatus('${l.id}',this.value)"><option value="new" ${l.status==="new"?"selected":""}>جديد</option><option value="contacted" ${l.status==="contacted"?"selected":""}>تم الاتصال</option><option value="interested" ${l.status==="interested"?"selected":""}>مهتم</option><option value="reserved" ${l.status==="reserved"?"selected":""}>حجز</option><option value="not_interested" ${l.status==="not_interested"?"selected":""}>غير مهتم</option></select><a class="action-btn primary" target="_blank" href="https://wa.me/${String(l.phone).replace(/\D/g,"")}">WhatsApp</a><button class="action-btn danger" onclick="deleteLead('${l.id}')">حذف</button></div>`;box.appendChild(d)})}
 async function updateLeadStatus(id,status){const {error}=await supabaseClient.from("leads").update({status}).eq("id",id).eq("user_id",currentUser.id);if(error)alert("تعذر تحديث الحالة: "+error.message)}
 async function deleteLead(id){if(!confirm("حذف هذا الطلب؟"))return;const {error}=await supabaseClient.from("leads").delete().eq("id",id).eq("user_id",currentUser.id);if(error){alert("تعذر الحذف: "+error.message);return}renderLeads()}
-
 const UI_LANG={
-  ar:{myProject:"مشروعي",requests:"طلبات",newProjectShort:"+ مشروع",logout:"خروج",pricingTitle:"أسعار دارك DZ",pricingNote:"خدمة بسيطة واحترافية للمرقّين العقاريين: صفحة مشروع جاهزة، عرض الصور والمعلومات، استقبال العملاء وWhatsApp.",freePlan:"مجاني",noSubscription:"بدون اشتراك",free1:"✓ صفحة مشروع واحدة",free2:"✓ معرض صور",free3:"✓ زر WhatsApp",free4:"✓ استقبال طلبات العملاء",free5:"✓ تجربة مناسبة قبل الاشتراك",basicPlan:"أساسي",basic1:"✓ صفحة مشروع احترافية",basic2:"✓ حتى 5 صور في المعرض",basic3:"✓ فيديو إعلاني واحد",basic4:"✓ WhatsApp + استقبال الطلبات",basic5:"✓ استضافة ونشر الصفحة",proPlan:"Pro",pro1:"✓ كل مزايا أساسي",pro2:"✓ تصميم أكثر تخصيصًا",pro3:"✓ إبراز الأسعار والعروض",pro4:"✓ قسم موقع المشروع",pro5:"✓ أولوية الدعم والتحديثات",pricingFoot:"الأسعار تخص خدمة دارك DZ فقط ولا تشمل قيمة العقار أو مصاريف الإعلان المدفوع."},
-  fr:{myProject:"Mon projet",requests:"Demandes",newProjectShort:"+ Projet",logout:"Déconnexion",pricingTitle:"Tarifs Darak DZ",pricingNote:"Un service simple et professionnel pour les promoteurs immobiliers : page de projet, photos, informations, prospects et WhatsApp.",freePlan:"Gratuit",noSubscription:"Sans abonnement",free1:"✓ Une page projet",free2:"✓ Galerie photos",free3:"✓ Bouton WhatsApp",free4:"✓ Réception des demandes clients",free5:"✓ Idéal pour tester le service",basicPlan:"Essentiel",basic1:"✓ Page projet professionnelle",basic2:"✓ Jusqu'à 5 photos dans la galerie",basic3:"✓ Une vidéo publicitaire",basic4:"✓ WhatsApp + demandes clients",basic5:"✓ Hébergement et publication",proPlan:"Pro",pro1:"✓ Toutes les fonctions Essentiel",pro2:"✓ Design plus personnalisé",pro3:"✓ Mise en avant des prix et offres",pro4:"✓ Section localisation du projet",pro5:"✓ Support et mises à jour prioritaires",pricingFoot:"Les tarifs concernent uniquement le service Darak DZ et n'incluent pas le prix du bien ni les frais de publicité payante."}
+  ar:{myProject:"مشروعي",leads:"طلبات",newProject:"+ مشروع",logout:"خروج",pricingTitle:"أسعار دارك DZ",pricingNote:"الخدمة موجهة للمرقّين العقاريين. الأسعار التالية تخص الاشتراك الشهري ولا تشمل قيمة العقار نفسه.",free:"مجاني",noSubscription:"بدون اشتراك",free1:"✓ صفحة عقارية واحدة",free2:"✓ معرض صور",free3:"✓ WhatsApp",free4:"✓ استقبال طلبات المهتمين",free5:"✓ مناسبة لتجربة الخدمة",basic:"أساسي",basic1:"✓ صفحة عقارية احترافية",basic2:"✓ حتى 5 صور في المعرض",basic3:"✓ فيديو إعلاني واحد",basic4:"✓ WhatsApp + طلبات المهتمين",basic5:"✓ الاستضافة والنشر",pro:"Pro",pro1:"✓ جميع مزايا أساسي",pro2:"✓ تخصيصات إضافية للصفحة",pro3:"✓ إبراز الأسعار والعروض",pro4:"✓ قسم موقع المشروع",pro5:"✓ دعم وأولوية في التحديثات"},
+  fr:{myProject:"Mon projet",leads:"Demandes",newProject:"+ Projet",logout:"Déconnexion",pricingTitle:"Tarifs Darak DZ",pricingNote:"Le service est destiné aux promoteurs immobiliers. Les prix ci-dessous concernent l’abonnement mensuel et n’incluent pas le prix du bien immobilier.",free:"Gratuit",noSubscription:"Sans abonnement",free1:"✓ Une page immobilière",free2:"✓ Galerie photos",free3:"✓ WhatsApp",free4:"✓ Réception des demandes",free5:"✓ Idéal pour tester le service",basic:"Essentiel",basic1:"✓ Page immobilière professionnelle",basic2:"✓ Jusqu’à 5 photos dans la galerie",basic3:"✓ Une vidéo publicitaire",basic4:"✓ WhatsApp + demandes",basic5:"✓ Hébergement et publication",pro:"Pro",pro1:"✓ Toutes les fonctionnalités Essentiel",pro2:"✓ Personnalisation supplémentaire",pro3:"✓ Mise en avant des prix et offres",pro4:"✓ Section localisation du projet",pro5:"✓ Support prioritaire et mises à jour"}
 };
 let currentLang=localStorage.getItem("darak_lang")||"ar";
 function applyLanguage(){
@@ -180,14 +208,21 @@ function applyLanguage(){
     if(Object.prototype.hasOwnProperty.call(d,key)) el.textContent=d[key];
   });
   const b=document.getElementById("langToggle");
-  if(b) b.textContent=currentLang==="ar"?"Français":"العربية";
+  if(b){b.textContent=currentLang==="ar"?"Français":"العربية";b.setAttribute("aria-label",currentLang==="ar"?"Passer au français":"Passer à l’arabe");}
 }
 window.toggleLanguage=function(){
   currentLang=currentLang==="ar"?"fr":"ar";
   try{localStorage.setItem("darak_lang",currentLang)}catch(e){}
   applyLanguage();
 };
+
+document.addEventListener("DOMContentLoaded",function(){
+  const b=document.getElementById("langToggle");
+  if(b){b.addEventListener("click",function(e){e.preventDefault();window.toggleLanguage();});}
+  applyLanguage();
+});
 applyLanguage();
+
 (async function init(){const {data}=await supabaseClient.auth.getSession();currentUser=data.session?.user||null;supabaseClient.auth.onAuthStateChange(async(_event,session)=>{currentUser=session?.user||null;if(!currentUser)showAuth()});if(currentUser){await loadProjects();showProjects()}else showAuth()})();
 </script>
 </body>
